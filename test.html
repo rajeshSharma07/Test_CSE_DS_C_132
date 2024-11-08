@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Card</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f9f9f9; 
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center; 
+      width: 300px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: white; 
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px; 
+    }
+
+    .product-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-align: center;
+    }
+
+    .product-price {
+      margin-bottom: 10px;
+      text-align: center; 
+      font-size: 1.2em;
+    }
+
+    .product-description {
+      margin-bottom: 10px;
+      text-align: center; 
+    }
+
+    .quantity-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .quantity-input {
+      width: 50px;
+      margin-bottom: 10px; 
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center; 
+    }
+
+    .total-price {
+      margin-bottom: 10px;
+      font-weight: bold; 
+      text-align: center; 
+      font-size: 1.2em; 
+    }
+
+    .buy-button {
+      background-color: #af894c;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .buy-button:hover {
+      background-color: #8e833e;
+    }
+  </style>
+</head>
+<body>
+    <div class="product-card">
+        <img src="dining8.jpeg" alt="Product Image" class="product-image">
+        <div class="product-info">
+          <h2 class="product-name">dining table</h2>
+          <p class="product-price" id="product-price" data-price="2000">2000rs</p> 
+          <p class="product-description">this is beautiful dining set.</p>
+          <h3 class="quantity-heading">Quantity</h3> 
+          <div class="quantity-container">
+            <input type="number" class="quantity-input" id="quantity-input" value="1" min="1">
+            <p class="total-price" id="total-price">Total: ₹1999.00</p> 
+            <button class="buy-button" id="buy-button">Buy Now</button>
+          </div>
+        </div>
+      </div>
+
+  <script>
+    document.getElementById('buy-button').addEventListener('click', function() {
+      
+      var quantity = document.getElementById('quantity-input').value;
+      var price = parseFloat(document.getElementById('product-price').getAttribute('data-price'));
+      
+      
+      if (quantity <= 0) {
+        alert('Please enter a valid quantity.');
+        return;
+      }
+
+      
+      var total = quantity * price;
+
+      
+      document.getElementById('total-price').innerText = 'Total: ₹' + total.toFixed(2);
+
+      
+      alert('You have added ' + quantity + ' item(s) for a total of ₹' + total.toFixed(2) + ' in the cart.');
+    });
+  </script>
+</body>
+</html>
